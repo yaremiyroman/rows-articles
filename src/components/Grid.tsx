@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { Children } from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import { isConstructorDeclaration } from 'typescript';
+
+interface IProps {
+  children: JSX.Element[] | JSX.Element | any
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -26,34 +31,28 @@ const gridStyles = {
    'margin': '0',
 }
 
-export default function CenteredGrid() {
-  const classes = useStyles();
-
+const GridedContainer = ({ children }: IProps): any => {
+  console.log(``)
   return (
-    <div className={classes.root} style={gridStyles}>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}> - 1 - </Paper>
-        </Grid>
-        <Grid item xs={6}>
-          <Paper className={classes.paper}> - 6 - </Paper>
-        </Grid>
-        <Grid item xs={6}>
-          <Paper className={classes.paper}> - 6 - </Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper className={classes.paper}> - 3 - </Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper className={classes.paper}> - 3 - </Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper className={classes.paper}> - 3 - </Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper className={classes.paper}> - 3 - </Paper>
-        </Grid>
-      </Grid>
+    <div>
+      {children.map((child: any): [any] => (
+        <span key={child}>
+          {child}
+        </span>
+      ))}
     </div>
-  );
-}
+)}
+
+  
+// const classes = useStyles()
+// return (
+//   <div className={classes.root} style={gridStyles}>
+//     <Grid container spacing={3}>
+//       <Grid item xs={12}>
+//         <Paper className={classes.paper}> - 1 - </sPaper>
+//       </Grid>
+//     </Grid>
+//   </div>
+// )
+
+export default GridedContainer

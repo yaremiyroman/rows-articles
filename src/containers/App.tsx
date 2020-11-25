@@ -1,6 +1,7 @@
 import React from 'react';
 import Grid from '../components/Grid'
+import Bugs from '../components/Bugs'
 
-export default function App() {
-  return <Grid />
-}
+const App = () => <Grid>{Bugs}</Grid>
+
+export default App
