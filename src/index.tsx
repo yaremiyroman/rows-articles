@@ -7,13 +7,11 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import App from './containers/App'
 import theme from './theme'
 // import store from './store'
-import Bugs from './components/Bugs'
 
 const rootEl = (
   <ThemeProvider theme={theme}>
     {/* <Provider store={store}> */}
     {/* <CssBaseline /> */}
-    <div style={{width: '100%'}}>{Bugs}</div>
     <App />
     {/* </Provider>, */}
   </ThemeProvider>
